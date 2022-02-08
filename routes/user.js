@@ -12,7 +12,6 @@ router.post("/user/signup", async (req, res) => {
   try {
     const email = req.fields.email;
     const username = req.fields.username;
-    const phone = req.fields.phone;
     const password = req.fields.password;
 
     if (username) {
@@ -34,20 +33,19 @@ router.post("/user/signup", async (req, res) => {
           email: email,
           account: {
             username: username,
-            phone: phone,
           },
           token: token,
           hash: hash,
           salt: salt,
         });
-        console.log(req.files);
         const userId = newUser.id;
-        const avatar = req.files.avatar.path;
-        const result = await cloudinary.uploader.upload(avatar, {
-          folder: `vinted/users/${userId}`,
-        });
-        console.log(result);
-        newUser.account.avatar = result;
+        if (Object.keys(req.files).length > 0) {
+          const avatar = req.files.avatar.path;
+          const result = await cloudinary.uploader.upload(avatar, {
+            folder: `vinted/users/${userId}`,
+          });
+          newUser.account.avatar = result;
+        }
         await newUser.save();
         res.status(200).json({
           _id: newUser._id,

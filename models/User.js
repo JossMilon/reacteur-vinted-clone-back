@@ -10,7 +10,6 @@ const User = mongoose.model("User", {
       required: true,
       type: String,
     },
-    phone: String,
     avatar: { type: mongoose.Schema.Types.Mixed, default: {} },
   },
   token: String,
