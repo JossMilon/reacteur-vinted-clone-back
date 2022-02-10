@@ -86,7 +86,7 @@ router.get("/offers", async (req, res) => {
     }
     let pageToSkip;
     if (Number(req.query.page) < 1 || !req.query.page) {
-      pageToSkip = 1;
+      pageToSkip = 0;
     } else {
       pageToSkip = (Number(req.query.page) - 1) * maxOffersPerPage;
     }
