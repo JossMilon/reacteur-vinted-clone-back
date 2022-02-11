@@ -105,7 +105,7 @@ router.get("/offers", async (req, res) => {
       offers: offersFound,
     });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ message: error.message });
   }
 });
 

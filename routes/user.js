@@ -53,13 +53,13 @@ router.post("/user/signup", async (req, res) => {
           account: newUser.account,
         });
       } else {
-        res.status(409).json({ error: "This email has already been used" });
+        res.status(409).json({ message: "This email has already been used" });
       }
     } else {
-      res.status(400).json({ error: "You must provide a username" });
+      res.status(400).json({ message: "You must provide a username" });
     }
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ message: error.message });
   }
 });
 
@@ -87,7 +87,7 @@ router.post("/user/login", async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ message: error.message });
   }
 });
 
