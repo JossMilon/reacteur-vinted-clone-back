@@ -82,7 +82,7 @@ router.get("/offers", async (req, res) => {
     //Build the pagination system
     let maxOffersPerPage = Number(req.query.limit);
     if (!maxOffersPerPage) {
-      maxOffersPerPage = 10;
+      maxOffersPerPage = 30;
     }
     let pageToSkip;
     if (Number(req.query.page) < 1 || !req.query.page) {
