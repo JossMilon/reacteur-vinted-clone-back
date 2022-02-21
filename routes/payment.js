@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const stripe = require("stripe")("sk_test_51KUxgSEOBrmHhbhzfZjjIHfMtTuxtD1MVW0hpYZcqttc8DYoDs0dGKWNmVcAdpi7hP5wO6SNxkrugUVCpH6Q9lkd00tSmHCMWm");
+const stripe = require("stripe")(process.env.SPENDESK_SECRET);
 
 router.post("/payment", async (req, res) => {
     try {
